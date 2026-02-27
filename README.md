@@ -19,8 +19,8 @@ jobs:
         with:
           remote: max-hoffman/dolt_action_test
           dolthub_credential: ${{ secrets.DOLTHUB_CREDENTIAL }}
-          message: 'Dolt action commit'
-          commit_branch: 'master'
+          branch: 'main'
+          commit_message: 'Dolt action commit'
           commit_user_email: max@dolthub.com
           commit_author: 'Max Hoffman'
           push: false
@@ -28,7 +28,14 @@ jobs:
             dolt sql -q "insert into aminals (12, 'hummingbird', 61)"
 ```
 
-Generate a Dolt API token at https://www.dolthub.com/settings/tokens, and set it as `DOLTHUB_CREDENTIAL` in the Secrets configuration in GitHub.
+### Generate Auth Key with DoltHub
+
+1. Run `ls ~/.dolt/creds` to see existing keys.
+2. Run `dolt creds new` to generate a new keypair.
+3. Copy the Public Key that gets printed to stdout.
+4. Paste the public key into https://www.dolthub.com/settings/credentials to authorize it.
+5. Run `cat ~/.dolt/creds/<new_jwt_file_that_appeared_after_step_2>.jwk`
+6. In the GitHub Secrets configuration for the repository, create a new secret named `DOLTHUB_CREDENTIAL`. Paste in the JSON value from Step 5.
 
 ## Parameters
 
