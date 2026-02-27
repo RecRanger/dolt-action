@@ -28,6 +28,8 @@ jobs:
             dolt sql -q "insert into aminals (12, 'hummingbird', 61)"
 ```
 
+Generate a Dolt API token at https://www.dolthub.com/settings/tokens, and set it as `DOLTHUB_CREDENTIAL` in the Secrets configuration in GitHub.
+
 ## Parameters
 
 The main parameters are those involveded in configuring, pulling and
