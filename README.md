@@ -14,7 +14,7 @@ jobs:
     name: A job to say hello
     steps:
       - name: Dolt Import
-        uses: dolthub/dolt-action@v1.0
+        uses: dolthub/dolt-action@v0.16
         id: 'dolt_import'
         with:
           remote: max-hoffman/dolt_action_test
